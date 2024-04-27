@@ -22,9 +22,7 @@ chain = APIChain.from_llm_and_api_docs(llm=llm,api_docs= doc.NEWS_DOCS,
 @chatbot.get("/")
 def read_root():
     base_path = os.path.dirname(__file__)
-    print(base_path)
     file_path = os.path.join(base_path, 'views', 'page.html')
-    print(file_path)
     return FileResponse(file_path)
 
 @chatbot.post("/QnA/")

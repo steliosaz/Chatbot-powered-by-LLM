@@ -1,37 +1,27 @@
-# MLytica coding task
+# Building a Chatbot with API routing with FastAPI.
 
-## Task
-Building a Chatbot with FastAPI Endpoints
+## Overview:
 
-### Requirements:
-1. You will be provided with a text file named competition_results.txt.
-2. Your goal is to create a chatbot powered by Language Models (LLMs).
-3. The chatbot should take the user's question and decide which of the two endpoints to call based on the input.
+I implemented the chatbot using LLM from OpenAI, integrated with API keys and Langchain framework for managing dialogue and decision-making processes. 
 
-### Endpoints:
-#### Endpoint1:
-- Input: "1st place", "2nd place", "3rd place"
-- Output: Corresponding department
+The user can ask the chatbot a question about content relevant to the context given. 
+The core of the system involves the Vector Store which constructs a similarity search index from a context file. This index enables the chatbot to accurately respond to queries about the given context determing releveant department or employee detailes based on users query. The users query is also processed by the LLM and Langchain library, which utilizes API documentation to guide the LLM in making intelligent decisions about which endpoint to invoke based on the user's input.This documentation effectively maps user queries to the appropriate API calls.
 
-#### Endpoint2:
-- Input: "1st place", "2nd place", "3rd place"
-- Output: Corresponding employee
+## Dockerization Details:
 
-### Requirements for Endpoints:
-- The endpoints should be flexible enough to handle any changes in the competition results text file, which may vary each month.
-- Utilize asynchronous (async) functions for improved efficiency.
-- Dockerize your solution to ensure portability and easy deployment.
+Both services are containerized into two seperate containers running at the same network on different ports. I utilized docker compose for achieving communication between containers. 
 
-### Implementation Details:
-- Create two separate FastAPI instances: one for the endpoints and one for the chatbot.
-- You can use OpenAI directly or choose a framework like LangChain to implement the chatbot functionality.
-- Showcase your coding skills, problem-solving abilities, and knowledge of different types of agents.
+## How to run:
+1. [Download docker compose](https://docs.docker.com/compose/install/)
 
-### Dockerization:
-- Package your solution into Docker containers to ensure easy deployment and scalability.
-- Provide clear instructions on how to run the Docker containers.
+2. You also need to obtain an OpenAI API key and insert it in both Dockerfiles.
 
-### Note:
-Ensure that your solution is scalable and adaptable to dynamic changes in the competition results. The provided text file may contain different data each month, and your endpoints should be capable of reading any competition results text file and returning the appropriate values. 
+3. Run below command to start the containers:
+```shell script
+docker-compose up -d
+```
+4. Your application will start on [localhost:8001](https://localhost:8001)
 
-Please do what you can and send us whatever you could manage.
+
+## Observations:
+The chatbot has limited capabilities due to the short amount of context but it's accurate if the user gives the appropriate prompt.
