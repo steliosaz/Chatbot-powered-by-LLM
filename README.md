@@ -23,13 +23,8 @@ Both services are containerized into two seperate containers running at the same
 ```shell script
 docker-compose up -d
 ```
-4. Your application will start on [localhost:8001](https://localhost:8001)
+4. Your application will start on [localhost:8001](http://localhost:8001)
 
 
 ## Observations:
 The chatbot has limited capabilities due to the short amount of context but it's accurate if the user gives the appropriate prompt.
-
-
-
-
-
